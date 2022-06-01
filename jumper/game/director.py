@@ -1,4 +1,5 @@
-from game.terminal_service import TerminalService
+# Global Imports:
+from game.Game import _Game
 
 """
     Update the code and the comments as you change the code for your game.  You will be graded on following the
@@ -6,16 +7,15 @@ from game.terminal_service import TerminalService
     https://byui-cse.github.io/cse210-course-competency/encapsulation/materials/jumper-specification.html
 """
 
-
-class Director:
+class _Director:
     """A person who directs the game. 
 
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
         is_playing (boolean): Whether or not to keep playing.
-        terminal_service: For getting and displaying information on the terminal.
     """
+    
 
     def __init__(self):
         """Constructs a new Director.
@@ -24,39 +24,21 @@ class Director:
             self (Director): an instance of Director.
         """
         self._is_playing = True
-        self._terminal_service = TerminalService()
+        self._game = _Game()
 
-    def start_game(self):
+    def _start_game(self):
         """Starts the game by running the main game loop.
 
         Args:
             self (Director): an instance of Director.
         """
         while self._is_playing:
-            self._get_inputs()
-            self._do_updates()
-            self._do_outputs()
+            self._play_game()
 
-    def _get_inputs(self):
-        """Update this comment
+    def _play_game(self):
+        """This method plays the game
 
         Args:
             self (Director): An instance of Director.
         """
-        pass
-
-    def _do_updates(self):
-        """Update this comment
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        pass
-
-    def _do_outputs(self):
-        """Update this comment
-
-        Args:
-            self (Director): An instance of Director.
-        """
-        pass
+        self._game.process()
